@@ -3,7 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L'Aire Joyeux – Association de solidarité</title>
+<title>L'Aire Joyeux – Association de solidarité · Val-de-Reuil</title>
+
+<!-- SEO -->
+<meta name="description" content="L'Aire Joyeux est une association de solidarité basée à Val-de-Reuil (27). Distribution alimentaire, soutien scolaire, café convivial, vestiboutique. Rejoignez-nous !">
+<meta name="keywords" content="association solidarité Val-de-Reuil, aide alimentaire Normandie, bénévolat, soutien scolaire, L'Aire Joyeux">
+<meta name="author" content="L'Aire Joyeux">
+<link rel="canonical" href="https://airejoyeux.fr/">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp…) -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://airejoyeux.fr/">
+<meta property="og:title"       content="L'Aire Joyeux – Association de solidarité à Val-de-Reuil">
+<meta property="og:description" content="Distribution alimentaire, soutien scolaire, café convivial… Depuis 10 ans, L'Aire Joyeux tisse des liens et soutient les personnes en difficulté en Normandie.">
+<meta property="og:image"       content="https://airejoyeux.fr/og-image.jpg">
+<meta property="og:locale"      content="fr_FR">
+<meta property="og:site_name"   content="L'Aire Joyeux">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="L'Aire Joyeux – Association de solidarité">
+<meta name="twitter:description" content="Depuis 10 ans au service de la solidarité à Val-de-Reuil. Rejoignez-nous !">
+<meta name="twitter:image"       content="https://airejoyeux.fr/og-image.jpg">
+
+<!-- Données structurées (Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "L'Aire Joyeux",
+  "description": "Association de solidarité à Val-de-Reuil, Normandie.",
+  "url": "https://airejoyeux.fr",
+  "email": "contact@airejoyeux.fr",
+  "telephone": "+33232000000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 rue de la Solidarité",
+    "addressLocality": "Val-de-Reuil",
+    "postalCode": "27100",
+    "addressCountry": "FR"
+  },
+  "foundingDate": "2016",
+  "sameAs": [
+    "https://facebook.com/airejoyeux",
+    "https://instagram.com/airejoyeux",
+    "https://discord.gg/exemple"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -56,13 +103,29 @@
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+  <button class="search-toggle" id="search-toggle" aria-label="Rechercher">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+  </button>
   <button class="dark-toggle" id="dark-toggle" aria-label="Mode sombre" title="Basculer mode sombre">
     <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- RECHERCHE -->
+<div id="search-overlay" class="search-overlay" role="dialog" aria-label="Recherche">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Rechercher une activité, actualité…" autocomplete="off" autofocus>
+      <button id="search-clear" class="search-clear" aria-label="Effacer">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+    <div class="search-hint">Appuyez sur <kbd>Échap</kbd> pour fermer</div>
+  </div>
+</div>
+
+<!-- HÉRO -->
 <section id="accueil" style="padding-top: 4rem; padding-bottom: 4rem;">
   <div>
     <span class="hero-tag">Association loi 1901 · Val-de-Reuil</span>
@@ -330,7 +393,7 @@
           <div class="actu-date">10 mai 2026</div>
           <div class="actu-titre">Collecte de printemps : un grand merci à tous les donateurs !</div>
           <p class="actu-extrait">Grâce à votre générosité, nous avons récolté plus de 300 kg de denrées alimentaires pour notre épicerie solidaire.</p>
-          <a href="#" class="actu-lien">Lire la suite →</a>
+          <div class="actu-footer"><a href="#" class="actu-lien">Lire la suite →</a><button class="btn-partager" data-titre="L'Aire Joyeux – Actualité" aria-label="Partager"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Partager</button></div>
         </div>
       </div>
 
@@ -354,7 +417,7 @@
           <div class="actu-date">28 avril 2026</div>
           <div class="actu-titre">Nouveau partenariat avec la Mairie de Val-de-Reuil</div>
           <p class="actu-extrait">Un accord de collaboration a été signé pour renforcer notre offre d'accompagnement social sur le territoire.</p>
-          <a href="#" class="actu-lien">Lire la suite →</a>
+          <div class="actu-footer"><a href="#" class="actu-lien">Lire la suite →</a><button class="btn-partager" data-titre="L'Aire Joyeux – Actualité" aria-label="Partager"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Partager</button></div>
         </div>
       </div>
 
@@ -389,7 +452,7 @@
           <div class="actu-date">15 avril 2026</div>
           <div class="actu-titre">Fête de quartier : retour en images sur une belle journée</div>
           <p class="actu-extrait">Plus de 80 personnes ont partagé un repas convivial lors de notre fête de quartier printanière. Un moment inoubliable !</p>
-          <a href="#" class="actu-lien">Lire la suite →</a>
+          <div class="actu-footer"><a href="#" class="actu-lien">Lire la suite →</a><button class="btn-partager" data-titre="L'Aire Joyeux – Actualité" aria-label="Partager"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Partager</button></div>
         </div>
       </div>
 
@@ -834,6 +897,22 @@
         <p style="font-size:0.82rem; color:var(--texte-doux); margin-top:1rem;">Les dons sont défiscalisables à 66% pour les particuliers (reçu fiscal fourni).</p>
       </div>
       <div class="don-actions">
+        <!-- COMPTEUR DE DONS -->
+        <div class="don-compteur">
+          <div class="don-compteur-infos">
+            <span class="don-compteur-collecte"><span id="don-collecte">1 240</span> € collectés</span>
+            <span class="don-compteur-objectif">sur <strong>2 000 €</strong></span>
+          </div>
+          <div class="don-barre-wrap">
+            <div class="don-barre-fond">
+              <div class="don-barre-fill" id="don-barre" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="don-compteur-meta">
+            <span>🎯 Objectif : financer les permanences de juin</span>
+            <span id="don-pourcent">62 %</span>
+          </div>
+        </div>
         <div class="don-montants">
           <button class="don-montant active" data-montant="10">10 €</button>
           <button class="don-montant" data-montant="25">25 €</button>
@@ -886,6 +965,185 @@
           Ouvrir dans OpenStreetMap →
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-tag">Questions fréquentes</span>
+    <h2 class="section-titre">Vous avez des questions ?</h2>
+    <p class="section-sous-titre">Tout ce que vous devez savoir sur l'association et nos services.</p>
+    <div class="faq-liste" id="faq-liste">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Comment adhérer à L'Aire Joyeux ?
+          <svg class="faq-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-reponse">
+          <p>L'adhésion se fait directement via le formulaire en ligne sur cette page, ou en vous rendant lors de nos permanences (mardi & jeudi 9h–12h, vendredi 14h–17h). La cotisation annuelle est libre et à partir de 5 €.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Qui peut bénéficier de vos services ?
+          <svg class="faq-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-reponse">
+          <p>Nos services sont ouverts à toutes les personnes résidant principalement sur Val-de-Reuil et les communes alentours. Aucun justificatif de revenus n'est demandé pour participer à nos activités conviviales (café, soutien scolaire). Pour la distribution alimentaire, un entretien préalable est effectué.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Comment devenir bénévole ?
+          <svg class="faq-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-reponse">
+          <p>Remplissez notre formulaire de bénévolat ci-dessous ou venez nous rencontrer lors d'une permanence. Nous accueillons tous les profils, quelle que soit votre disponibilité. Une réunion d'intégration est organisée chaque premier mardi du mois.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Mon don est-il défiscalisable ?
+          <svg class="faq-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-reponse">
+          <p>Oui ! L'Aire Joyeux est une association reconnue d'intérêt général. Vos dons ouvrent droit à une réduction d'impôt de 66 % du montant versé, dans la limite de 20 % de votre revenu imposable. Un reçu fiscal vous est automatiquement envoyé après chaque don.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Proposez-vous des stages ou emplois ?
+          <svg class="faq-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-reponse">
+          <p>Nous accueillons régulièrement des stagiaires (service civique, stage de découverte, licence pro). Contactez-nous par e-mail à <a href="mailto:contact@airejoyeux.fr">contact@airejoyeux.fr</a> avec votre projet. Les offres d'emploi sont publiées sur notre page Facebook.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="faq-cta">
+      <p>Vous ne trouvez pas votre réponse ?</p>
+      <a href="#contact" class="btn-secondaire">Contactez-nous →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAIRE BÉNÉVOLAT -->
+<section id="benevolat">
+  <div class="container">
+    <span class="section-tag">Bénévolat</span>
+    <h2 class="section-titre">Rejoignez notre équipe</h2>
+    <p class="section-sous-titre">Chaque heure donnée compte. Dites-nous qui vous êtes et ce qui vous motive.</p>
+    <div class="benevolat-grid">
+      <div class="benevolat-infos">
+        <div class="benevolat-item">
+          <div class="benevolat-icone">🕐</div>
+          <div><strong>Flexible</strong><p>2h par semaine suffisent. Vous choisissez vos créneaux.</p></div>
+        </div>
+        <div class="benevolat-item">
+          <div class="benevolat-icone">🎓</div>
+          <div><strong>Formation incluse</strong><p>Nous vous accompagnons dès votre arrivée, quel que soit votre profil.</p></div>
+        </div>
+        <div class="benevolat-item">
+          <div class="benevolat-icone">🤝</div>
+          <div><strong>Communauté</strong><p>Rejoignez une équipe soudée de 12 bénévoles engagés.</p></div>
+        </div>
+      </div>
+      <form class="benevolat-form" id="benevolat-form">
+        <div class="benv-row">
+          <div><label class="contact-form-label">Prénom *</label><input class="contact-input" type="text" name="prenom" required placeholder="Marie"></div>
+          <div><label class="contact-form-label">Nom *</label><input class="contact-input" type="text" name="nom" required placeholder="Dupont"></div>
+        </div>
+        <div><label class="contact-form-label">E-mail *</label><input class="contact-input" type="email" name="email" required placeholder="marie@email.com"></div>
+        <div><label class="contact-form-label">Téléphone</label><input class="contact-input" type="tel" name="tel" placeholder="06 XX XX XX XX"></div>
+        <div>
+          <label class="contact-form-label">Disponibilités *</label>
+          <div class="benv-checkboxes">
+            <label class="benv-check"><input type="checkbox" name="dispo" value="mardi-matin"> Mardi matin</label>
+            <label class="benv-check"><input type="checkbox" name="dispo" value="jeudi-matin"> Jeudi matin</label>
+            <label class="benv-check"><input type="checkbox" name="dispo" value="vendredi-aprem"> Vendredi après-midi</label>
+            <label class="benv-check"><input type="checkbox" name="dispo" value="weekend"> Week-end</label>
+          </div>
+        </div>
+        <div>
+          <label class="contact-form-label">Compétences / intérêts</label>
+          <div class="benv-checkboxes">
+            <label class="benv-check"><input type="checkbox" name="competence" value="admin"> Aide administrative</label>
+            <label class="benv-check"><input type="checkbox" name="competence" value="scolaire"> Soutien scolaire</label>
+            <label class="benv-check"><input type="checkbox" name="competence" value="distribution"> Distribution alimentaire</label>
+            <label class="benv-check"><input type="checkbox" name="competence" value="evenements"> Événements</label>
+            <label class="benv-check"><input type="checkbox" name="competence" value="comm"> Communication</label>
+            <label class="benv-check"><input type="checkbox" name="competence" value="autre"> Autre</label>
+          </div>
+        </div>
+        <div><label class="contact-form-label">Motivation (quelques mots)</label><textarea class="contact-input contact-textarea" name="motivation" placeholder="Ce qui vous donne envie de nous rejoindre…" rows="3"></textarea></div>
+        <button type="submit" class="btn-form" id="btn-benevolat">Envoyer ma candidature →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENAIRES -->
+<section id="partenaires">
+  <div class="container">
+    <span class="section-tag">Ils nous soutiennent</span>
+    <h2 class="section-titre">Nos partenaires</h2>
+    <p class="section-sous-titre">L'Aire Joyeux agit grâce au soutien de partenaires institutionnels et associatifs.</p>
+    <div class="partenaires-grid">
+
+      <a href="#" class="partenaire-card" target="_blank" rel="noopener" aria-label="Mairie de Val-de-Reuil">
+        <div class="partenaire-logo">🏛️</div>
+        <div class="partenaire-nom">Mairie de Val-de-Reuil</div>
+        <div class="partenaire-type">Collectivité</div>
+      </a>
+
+      <a href="#" class="partenaire-card" target="_blank" rel="noopener" aria-label="CAF de l'Eure">
+        <div class="partenaire-logo">👨‍👩‍👧</div>
+        <div class="partenaire-nom">CAF de l'Eure</div>
+        <div class="partenaire-type">Institution</div>
+      </a>
+
+      <a href="#" class="partenaire-card" target="_blank" rel="noopener" aria-label="Banque Alimentaire">
+        <div class="partenaire-logo">🥫</div>
+        <div class="partenaire-nom">Banque Alimentaire de l'Eure</div>
+        <div class="partenaire-type">Réseau solidaire</div>
+      </a>
+
+      <a href="#" class="partenaire-card" target="_blank" rel="noopener" aria-label="Département de l'Eure">
+        <div class="partenaire-logo">🗺️</div>
+        <div class="partenaire-nom">Département de l'Eure</div>
+        <div class="partenaire-type">Collectivité</div>
+      </a>
+
+    </div>
+    <p class="partenaires-cta-texte">Vous souhaitez devenir partenaire ? <a href="#contact" class="lien-vert">Contactez-nous</a></p>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-texte">
+        <span class="section-tag">Newsletter</span>
+        <h2 class="section-titre" style="margin-bottom: 0.5rem;">Restez informés</h2>
+        <p style="color: var(--texte-doux); font-size: 0.93rem;">Actualités, événements, appels aux dons… Recevez nos nouvelles une fois par mois. Pas de spam, désabonnement en un clic.</p>
+      </div>
+      <form class="newsletter-form" id="newsletter-form">
+        <div class="newsletter-inputs">
+          <input type="text"  class="contact-input" placeholder="Votre prénom" style="flex:1; min-width:120px;">
+          <input type="email" class="contact-input" placeholder="Votre e-mail" required style="flex:2; min-width:180px;">
+        </div>
+        <button type="submit" class="btn-newsletter" id="btn-newsletter">S'inscrire →</button>
+        <p class="newsletter-rgpd">En vous inscrivant, vous acceptez de recevoir nos actualités. Conformément au RGPD, vous pouvez vous désinscrire à tout moment.</p>
+      </form>
     </div>
   </div>
 </section>
